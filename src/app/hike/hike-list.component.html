@@ -1,0 +1,9 @@
+<h2>Liste de randonnées</h2>
+
+<ul *ngFor="let hike of hikes">
+    <li><a [routerLink]="['/hikes', hike.id]"> {{ hike.name | uppercase }} </a>
+        <br>
+        {{ hike.description }}
+    </li>
+    <hr>
+</ul>
