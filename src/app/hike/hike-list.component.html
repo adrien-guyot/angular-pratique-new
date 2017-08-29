@@ -3,5 +3,5 @@
     Filter par : <input type="text" [(ngModel)]="searchTerm" placeholder="Mot-clés...">
 </div>
 <div *ngFor="let hike of hikes | hikeFilter: searchTerm">
-    <hike-summary [rando]="hike"></hike-summary>
+    <hike-summary [rando]="hike" (addHikeAsFavorite)="addToMyTodoHike($event)"></hike-summary>
 </div>

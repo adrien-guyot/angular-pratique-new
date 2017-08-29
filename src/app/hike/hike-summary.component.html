@@ -4,5 +4,8 @@
     </div>
     <div class="panel-body">
         {{ rando.description }}
+        <br>
+        <input type="checkbox"
+            (change)="toggleAsTodoHike($event.target.checked)"> à faire
     </div>
 </div>
