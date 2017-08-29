@@ -2,10 +2,6 @@
 <div>
     Filter par : <input type="text" [(ngModel)]="searchTerm" placeholder="Mot-clés...">
 </div>
-<ul *ngFor="let hike of hikes | hikeFilter: searchTerm">
-    <li><a [routerLink]="['/hikes', hike.id]"> {{ hike.name | uppercase }} </a>
-        <br>
-        {{ hike.description }}
-    </li>
-    <hr>
-</ul>
+<div *ngFor="let hike of hikes | hikeFilter: searchTerm">
+    <hike-summary [rando]="hike"></hike-summary>
+</div>
