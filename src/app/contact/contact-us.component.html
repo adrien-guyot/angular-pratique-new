@@ -1,6 +1,6 @@
 <h2>Contactez-nous</h2>
 
-<form #form="ngForm" novalidate>
+<form #form="ngForm" (submit)="sendMessage(form)" novalidate>
     <div class="form-group"
     [class.has-error]="msgSubject.invalid && msgSubject.touched">
         <label for="subject" class="control-label">Sujet</label>
@@ -24,7 +24,7 @@
         </textarea>
     </div> 
     <div class="form-group">
-        <label for="service">Sujet</label>
+        <label for="service">Service</label>
         <select id="service" ngModel name="service" class="form-control">
             <option value="tech">Technique</option>
             <option value="sales">Commercial</option>
