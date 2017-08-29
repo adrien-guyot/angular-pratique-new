@@ -1,13 +1,26 @@
 <h2>Contactez-nous</h2>
 
-<form #form="ngForm">
-    <div class="form-group">
-        <label for="subject">Sujet</label>
-        <input type="text" ngModel name="subject" class="form-control" id="subject" placeholder="sujet">
+<form #form="ngForm" novalidate>
+    <div class="form-group"
+    [class.has-error]="msgSubject.invalid && msgSubject.touched">
+        <label for="subject" class="control-label">Sujet</label>
+        <input type="text" 
+            #msgSubject="ngModel"
+            ngModel 
+            required 
+            name="subject" 
+            class="form-control" 
+            id="subject" 
+            placeholder="sujet">
+            <div *ngIf="msgSubject.invalid && msgSubject.touched">Sujet manquant</div>
     </div>
     <div class="form-group">
         <label for="message">Sujet</label>
-        <textarea class="form-control" ngModel name="message" id="message" placeholder="votre message">
+        <textarea class="form-control" 
+            ngModel 
+            name="message" 
+            id="message" 
+            placeholder="votre message">
         </textarea>
     </div> 
     <div class="form-group">
@@ -22,3 +35,5 @@
 </form>
 
 Form : {{ form.value | json}}
+<br>
+Sujet : {{ msgSubject.valid }}
