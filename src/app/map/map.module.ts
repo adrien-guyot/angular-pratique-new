@@ -5,6 +5,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
 
 import { MapComponent } from './map.component';
 
+import { MapService } from './map.service';
+
 @NgModule({
     imports:[
         CommonModule,
@@ -12,7 +14,7 @@ import { MapComponent } from './map.component';
             apiKey: 'AIzaSyAXmtvozeZD67t1g5CWqDYxZUrk7rz0X00'
         })
     ],
-    providers: [],
+    providers: [ MapService ],
     declarations: [ MapComponent ],
 })
 
