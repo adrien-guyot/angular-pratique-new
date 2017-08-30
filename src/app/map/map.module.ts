@@ -1,4 +1,3 @@
-import { AppComponent } from './../app.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 

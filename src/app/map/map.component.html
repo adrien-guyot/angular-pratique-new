@@ -1,6 +1,19 @@
 <div class="row">
     <h2>Carte de la prochaine randonnée</h2>
     <sebm-google-map [latitude]="lat" [longitude]="lng">
-        <sebm-google-map-marker [latitude]="lat" [longitude]="lng"></sebm-google-map-marker>
+        <sebm-google-map-marker
+            [latitude]="lat"
+            [longitude]="lng"
+            [markerDraggable]="true"
+            (dragEnd)="onCoordMarkerDropped($event)"
+            ></sebm-google-map-marker>
     </sebm-google-map>
+
+    <div *ngIf="!markerWasDropped">
+        Veuillez déplacer le marqueur vers la position souhaitée.
+    </div>
+    <div *ngIf="markerWasDropped">
+        latitude : {{ droppedLat }}
+        longitude : {{ droppedLng }}
+    </div>
 </div>
