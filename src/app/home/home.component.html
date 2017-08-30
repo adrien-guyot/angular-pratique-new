@@ -16,3 +16,21 @@
   After the avalanche, it took us a week to climb out. Now, I don't know exactly when we turned on each other, but I know
   that seven of us survived the slide... and only five made it out. Now we took an oath, that I'm breaking now. We said we'd
   say it was the snow that killed the other two, but it wasn't. Nature is lethal but it doesn't hold a candle to man.</div>
+
+<div class="row">
+  <h3>Citations</h3>
+  <div class="frame col-md-6">
+    <div class="citation" [@animateCitation]="animateCitation">
+      {{ quote.text }}
+      <br>
+      <em>{{ quote.author }}</em>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <a class="btn btn-primary" (click)="getPreviousQuote()">précédente</a>
+    <a class="btn btn-primary" (click)="getNextQuote()">suivante</a>
+  </div>
+</div>
