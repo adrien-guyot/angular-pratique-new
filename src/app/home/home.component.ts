@@ -41,18 +41,18 @@ export class HomeComponent {
     quotes: quote[] = [
         {
             id: 0,
-            text: "Laudate omnes gentes laudate",
-            author: "Ace"
+            text: "Laudate omnes gentes laudate, Magnificat in secula, Et anima mea laudate, Magnificat in secula",
+            author: "Ace of Base"
         },
         {
             id: 1,
-            text: "Et anima mea laudate",
-            author: "Of"
+            text: "If you wanna make the world a better place, Take a look at yourself and then make the change",
+            author: "Michael Jackson"
         },
         {
             id: 2,
-            text: "Magnificat in secula",
-            author: "Base"
+            text: "Ah, le notti che senza di te, ch'eri la luce per me, Ah, capire no, sai non si può, nel buio un grido sarò",
+            author: "Jeanne Mas"
         }
     ]
 
@@ -78,6 +78,10 @@ export class HomeComponent {
         }
 
         this.quote = this.quotes[this.index];
+    }
+
+    log(event: any){
+        console.log(event);
     }
 
     toggle() {

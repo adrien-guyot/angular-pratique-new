@@ -20,7 +20,10 @@
 <div class="row">
   <h3>Citations</h3>
   <div class="frame col-md-6">
-    <div class="citation" [@animateCitation]="animateCitation">
+    <div class="citation" [@animateCitation]="animateCitation"
+                          (@animateCitation.start)="log($event)"
+                          (@animateCitation.done)="log($event)"
+    >
       {{ quote.text }}
       <br>
       <em>{{ quote.author }}</em>
