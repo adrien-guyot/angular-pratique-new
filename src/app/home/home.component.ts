@@ -9,7 +9,7 @@ import { Component, trigger, state, animate, style, transition, keyframes } from
             state('closed', style({ 'height': '0px', 'font-size': '0px'})),
 
             transition('closed <=> open', [
-                animate(1000)
+                animate("1000ms 100ms cubic-bezier(1, 0, 0, 1)")
             ])
         ])
     ],
@@ -19,7 +19,7 @@ import { Component, trigger, state, animate, style, transition, keyframes } from
 
 export class HomeComponent {
     open: boolean = false;
-    toggleElement: string;
+    toggleElement: string = 'closed';
 
     toggle(){
         this.open = !this.open;
