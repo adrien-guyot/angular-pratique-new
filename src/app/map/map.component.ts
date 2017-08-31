@@ -47,6 +47,12 @@ export class MapComponent {
         this.pointsForPolyline.push({lat: droppedLatForPolyline, lng: droppedLngForPolyline});
     }
 
+    resetStartingPoint(){
+        this.pointsForPolyline = [];
+        this.startingPoint = "";
+        this.markers.splice((this.markers.length -1), 1);
+    }
+
     placeMarkerOnGeocodedPlace(location: any){
         let marker = {
             lat: location.geometry.location.lat(),
