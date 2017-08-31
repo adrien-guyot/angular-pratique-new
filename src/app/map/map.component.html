@@ -12,6 +12,12 @@
             [markerDraggable]="true"
             (dragEnd)="onCoordMarkerDropped($event)"
             ></sebm-google-map-marker>
+
+        <sebm-google-map-marker *ngFor="let m of markers"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            [markerDraggable]="m.draggable"
+            ></sebm-google-map-marker>
     </sebm-google-map>
 
     <div *ngIf="!markerWasDropped">

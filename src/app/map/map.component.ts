@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ApplicationRef } from '@angular/core';
 
 import { MapService } from './map.service';
 
@@ -17,7 +17,9 @@ export class MapComponent {
     droppedLng: number;
     markerWasDropped: boolean;
     startingPoint: string = "La ville Ollivier, 35140 Mézières-sur-Couesnon, France";
-    constructor(private _mapService: MapService) {
+    markers: marker[] = [];
+
+    constructor(private _mapService: MapService, private _applicationRef: ApplicationRef) {
 
     }
 
@@ -31,8 +33,28 @@ export class MapComponent {
         this._mapService
             .getLatLng(this.startingPoint)
             .subscribe(
-                (data:any) => console.log(data),
-                (err: any) => console.error(err)
+            (data: any) => this.placeMarkerOnGeocodedPlace(data),
+            (err: any) => console.error(err)
             )
     }
+
+    placeMarkerOnGeocodedPlace(location: any){
+        let marker = {
+            lat: location.geometry.location.lat(),
+            lng: location.geometry.location.lng(),
+            title: "",
+            draggable: true
+        }
+
+        this.markers.push(marker);
+        this._applicationRef.tick();
+    }
+}
+
+interface marker {
+    lat: number;
+    lng: number;
+    title?: string; // title?: signifie que ce n'est pas une propriété obligatoire dans l'interface
+    icon?: string;
+    draggable: boolean;
 }
