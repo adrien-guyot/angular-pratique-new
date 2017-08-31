@@ -2,8 +2,31 @@
     <h2>Carte de la prochaine randonnée</h2>
 
     <div>
-        <button (click)="geocode()">Localiser</button>
+        <input type="text" 
+            class="start"
+            name="" 
+            value="" 
+            placeholder="Votre point de départ" 
+            [(ngModel)]="startingPoint"
+           >
+        <button class="btn btn-primary" (click)="geocode()">Localiser</button>
     </div>
+
+    <br>
+
+    <div>
+        <form (submit)="addMarkerByCoords(form.value)" #form="ngForm">
+            <label for="markerByCoordsLat">Latitude</label>
+            <input type="text" name="markerByCoordsLat" ngModel id="markerByCoordsLat">
+
+            <label for="markerByCoordsLng">Longitude</label>
+            <input type="text" name="markerByCoordsLng" ngModel id="markerByCoordsLng">
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </div>
+
+    {{ form.value | json }}
 
     <sebm-google-map [latitude]="lat" [longitude]="lng">
         <sebm-google-map-marker
@@ -18,6 +41,14 @@
             [longitude]="m.lng"
             [markerDraggable]="m.draggable"
             ></sebm-google-map-marker>
+
+        <sebm-google-map-marker *ngFor="let m2 of markersFromCoords"
+            [latitude]="m2.lat"
+            [longitude]="m2.lng"
+            [markerDraggable]="m2.draggable"
+            [iconUrl]="m2.icon"
+            ></sebm-google-map-marker>            
+
     </sebm-google-map>
 
     <div *ngIf="!markerWasDropped">

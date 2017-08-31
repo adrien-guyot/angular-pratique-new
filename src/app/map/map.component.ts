@@ -18,6 +18,7 @@ export class MapComponent {
     markerWasDropped: boolean;
     startingPoint: string = "La ville Ollivier, 35140 Mézières-sur-Couesnon, France";
     markers: marker[] = [];
+    markersFromCoords: marker[] = [];
 
     constructor(private _mapService: MapService, private _applicationRef: ApplicationRef) {
 
@@ -48,6 +49,14 @@ export class MapComponent {
 
         this.markers.push(marker);
         this._applicationRef.tick();
+    }
+
+    addMarkerByCoords(formValue: any){
+        let marker = { lat: 0, lng: 0, draggable: false, icon: "", title: ""};
+        marker.lat = parseFloat(formValue.markerByCoordsLat);
+        marker.lng = parseFloat(formValue.markerByCoordsLng);
+        marker.icon = "app/map/images/greenmarker.png";
+        this.markersFromCoords.push(marker);
     }
 }
 
