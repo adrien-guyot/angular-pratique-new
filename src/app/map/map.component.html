@@ -42,12 +42,27 @@
             [markerDraggable]="m.draggable"
             ></sebm-google-map-marker>
 
+        <sebm-google-map-marker *ngFor="let m of markers"
+            [latitude]="m.lat"
+            [longitude]="m.lng"
+            [markerDraggable]="m.draggable"
+            (dragEnd)="updatePolyline($event)"
+            ></sebm-google-map-marker>
+
         <sebm-google-map-marker *ngFor="let m2 of markersFromCoords"
             [latitude]="m2.lat"
             [longitude]="m2.lng"
             [markerDraggable]="m2.draggable"
             [iconUrl]="m2.icon"
             ></sebm-google-map-marker>            
+
+        <sebm-google-map-polyline>
+            <sebm-google-map-polyline-point
+                *ngFor="let point of pointsForPolyline"
+                [latitude]="point.lat"
+                [longitude]="point.lng">
+            </sebm-google-map-polyline-point>
+        </sebm-google-map-polyline>
 
     </sebm-google-map>
 
